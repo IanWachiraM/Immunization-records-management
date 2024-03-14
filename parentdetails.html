@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taking the Parents' details.</title>
+    <script src="linkrecord.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            border: border-box;
+            width: 90%;
+            background: bisque;
+            font-family:Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .card {
+            background-color: seashell;
+            width: 500%;
+            padding: 50px 30px 50px 50px;
+            border: 6px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 20px 20px 0 rgba(6, 6, 6, 0.3);
+            border-radius: 40px;
+            position: relative;
+            justify-content: center;
+        }
+        
+        .card h1 {
+            color: black;
+            font-size: 25px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        
+        .card .row {
+            position: relative;
+            width: 100%;
+            display: grid;
+            grid: auto / auto auto;
+            grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+            grid-gap: 40px;
+        }
+        
+        .card .row .col {
+            position: relative;
+            width: 100%;
+            margin: 30px 20px 90px 0;
+            transition: 0.5s;
+        }
+        
+        .card .row .form-group {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            color:black;
+        }
+        
+        .card .row .form-group input,
+        .card .row .form-group textarea {
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            font-size: 20px;
+            padding: 10px 0 10px 20px;
+            border: 5px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+            color: black;
+            border-radius: 50px;
+        }
+        
+        .card .row .form-group label {
+            line-height: 40px;
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 0 0 30px;
+            display: block;
+            pointer-events: none;
+        }
+        
+        .card .row .form-group input:focus,
+        .card .row .form-group textarea:focus {
+            border: 5px solid black;
+            transition: all 0.5s;
+        }
+        
+        .card .row input[type="submit"] {
+            border: 5px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            height: 90%;
+            width: 50%;
+            cursor: pointer;
+            outline: none;
+            background: transparent;
+            text-transform: uppercase;
+            color: black;
+            line-height: 40px;
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 45px;
+            transition: all 0.4s;
+            align-items: center;
+            position: relative;
+        }
+        
+        .card .row input[type="submit"]:hover {
+            border: 5px solid rgb(6, 6, 6);
+            color: black;
+            transition: all 0.4s;
+        }
+        
+        @media screen and (max-width: 900px) {
+            .card .row {
+            grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
+            }
+        
+            .card {
+            padding: 20px;
+            }
+        
+            .card h2 {
+            font-size: 34px;
+            }
+        
+            .card .row input[type="submit"] {
+            width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <form action="parentdetails.php" method="post" onsubmit="return validateForm(this)">
+            <h1>Kindly fill in both parents' details</h1>
+            <div class="row">
+                <!-- Father's details -->
+                <div class="father-details">
+                    <h2>Father's Details</h2>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="father_fname" placeholder="First Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" name="father_mname" placeholder="Middle Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="father_lname" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Telephone Number</label>
+                            <input type="tel" name="father_number" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="father_address" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>ID Number</label>
+                            <input type="number" name="father_id_number" placeholder="ID Number" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mother's details -->
+                <div class="mother-details">
+                    <h2>Mother's Details</h2>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="mother_fname" placeholder="First Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" name="mother_mname" placeholder="Middle Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="mother_lname" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Telephone Number</label>
+                            <input type="tel" name="mother_number" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="mother_address" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>ID Number</label>
+                            <input type="number" name="mother_id_number" placeholder="ID Number" required>
+                        </div>
+                    </div>
+                </div>
+
+            
+
+                <div class="col">
+                    <input type="submit" value="Submit" >
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--
+    <script>
+        function openDashboard(){
+            window.location.href = "dashboard.html";
+        }
+        </script>
+    -->
+</body>
+</html>

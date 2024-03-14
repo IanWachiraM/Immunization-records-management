@@ -1,0 +1,77 @@
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #47409a, #333350);
+}
+.main{
+    width: 500px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 5px;
+	box-shadow: 5px 20px 50px #000;
+}
+
+.checkrecord{
+    width: 90%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+}
+label{
+	
+	color: #fff;
+	font-size:17px;	
+	position: relative;
+
+}
+
+
+#new_record{
+	display: block;
+	margin-bottom: auto;
+}
+#existing_record{
+	text-emphasis: none;
+	text-align: left;
+	margin-bottom: auto
+}
+button {
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	display: inline flex;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #4d3677;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+	background-color: #7a45a0;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+	background-color: #6f3e8e;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	transform: translateY(1px);
+}
+
+

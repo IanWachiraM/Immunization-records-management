@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+            font-weight: 16rem;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: larger;
+            padding: 10px 20px;
+            text-align: center;
+        }
+       
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #100f0f;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            font-size: medium;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        button{
+            display: block;
+            margin: 0 auto;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            font-weight: bolder;
+            font-size: large;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: absolute;
+            bottom: 0;
+            width: 98%;
+            background-color: #333;
+            color: #fff;
+            padding: 15px 16px;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Doctor Appointment</h1>
+    </header>
+    <div class="container">
+        <h2>Book an Appointment</h2>
+        <form id="appointment-form" action="appoint.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time" required>
+            <input type="submit" value="Submit Appointment">
+            
+        </form>
+    </div>
+    <button onclick="goToPage()">Back to Dashboard</button>
+    <script>
+        function goToPage(){
+            window.location.href="dashboard.html";
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 iChanjo</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Subscription</title>
+    <link rel="stylesheet" href="notify.css">
+</head>
+<body>
+    <header>
+        <h1>Notifications</h1><br>
+        <h2>Kindly fill in your details to receive alerts for your child's vaccination.</h2>
+    </header>
+    <div class="container">
+        <h2>Subscribe to Notifications</h2>
+        <form id="subscriptionForm" action="subscribe.php" method="post">
+            <label for="patient_ID">Enter Patient ID</label>
+            <input type="number" id="patient_id" name="patient_id" required><br>
+            <label for="vaccine_type">Vaccine Type:</label>
+                    <select id="vaccine_type" name="vaccine_type" required>
+                        <option value="bcg">BCG</option>
+                        <option value="dpt">DPT</option>
+                        <option value="hepatitis_A">Hepatitis A</option>
+                        <option value="hepatitis_B">Hepatitis B</option>
+                        <option value="measles">Measles</option>
+                        <option value="polio">Polio</option>
+                        <option value="rotavirus">Rotavirus</option>
+                        <option value="rsv">RSV</option>
+                        <option value="covid">Covid 19</option>
+                    </select>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="^\+254\d{9}$" title="Enter a valid Kenyan telephone number" required>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+           
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <button onclick="goToPage()">Back to Dashboard</button>   
+    <script>
+        function goToPage(){
+            window.location.href="dashboard.html";
+        }
+    </script>
+    <!-- <script src="subscription.js"></script> -->
+</body>
+</html>

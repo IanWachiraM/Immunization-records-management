@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Dashboard</title>
+    <style>
+        body {
+            font-family: "Jost", sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            background-color:bisque;
+        }
+        header {
+            background-color: #333;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            color: #f1f1f1;
+            padding: 20px;
+            display: block;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container {
+            max-width: 2200px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+        .side-menu {
+            width: 200px;
+            height: 100vh;
+            background-color: #333;
+            padding: 20px;
+        }
+        .side-menu a {
+            display: block;
+            padding: 10px;
+            color: #ede6e6;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+        }
+        .side-menu a:hover {
+            background-color: #848383;
+        }
+        .content-section {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 0px;
+        }
+        .form_section {
+            margin-bottom: 20px;
+        }
+        .form_section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form_section input[type="text"],
+        .form_section input[type="date"],
+        .form_section select {
+            width: 300%;
+            padding: 6px 4px;
+            margin-bottom: 10px;
+            border: 1px solid #0c0c0c;
+            border-radius: 3px;
+        }
+        button {
+        background-color: #333; 
+        color: white; 
+        padding: 10px 20px; 
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: large; 
+        font-weight: bolder;
+        border: none; 
+        cursor: pointer; 
+        border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to iChanjo.</h1>
+        <h2>Ensuring that all children are vaccinated, one child at a time.</h2>
+    </header>
+    <div class="container">
+        <div class="side-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="childinfo.php">Registered Children</a> <!-- Restrict to admin.-->
+            <a href="vaccineinfo.html">Vaccine Information</a>
+            <a href="myinfo.php">My Information</a>
+            <a href="notification.html">Manage Notifications</a> <!-- Restrict to admin.-->
+            <a href="appointment.html">Make an Appointment</a>
+        </div>
+        <div class="container">
+            <div class="form_section">
+                <form id="dashboard" action="submit.php" method="post">
+                    <label for="name">Enter the Patient ID:</label>
+                    <input type="number" id="patient_id" name="patient_id" required><br>
+                    <label for="height">Patient Height (cm):</label>
+                    <input type="number" id="height" name="height" required><br>
+                    <label for="weight">Patient Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" required><br>
+                    <label for="vaccine_type">Vaccine Type:</label>
+                    <select id="vaccine_type" name="vaccine_type" required>
+                        <option value="bcg">BCG</option>
+                        <option value="dpt">DPT</option>
+                        <option value="hepatitis_A">Hepatitis A</option>
+                        <option value="hepatitis_B">Hepatitis B</option>
+                        <option value="measles">Measles</option>
+                        <option value="polio">Polio</option>
+                        <option value="rotavirus">Rotavirus</option>
+                        <option value="rsv">RSV</option>
+                        <option value="covid">Covid 19</option>
+                    </select>
+                    <label for="administration_date">Date of Administration:</label>
+                    <input type="date" id="administration_date" name="administration_date" required>
+                    <label for="next_administration">Date for Next Vaccination:</label>
+                    <input type="date" id="next_administration" name="next_administration">
+                    <label for="batch_number">Batch Number:</label>
+                    <input type="text" id="batch_number" name="batch_number" required>
+                    <label for="healthcare_provider">Healthcare Provider:</label>
+                    <select id="healthcare_provider" name="healthcare_provider" required>
+                        <option value="baraka">Baraka</option>
+                        <option value="musa">Musa</option>
+                        <option value="rose">Rose</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div></div>
+        
+</body>
+</html>
+    
+    
