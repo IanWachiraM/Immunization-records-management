@@ -16,6 +16,10 @@
             border-collapse: collapse;
             width: 100%;
         }
+        label{
+            font-weight: bold;
+            font-size: medium;
+        }
         th, td {
             border: 1px solid black;
             padding: 8px;
@@ -42,7 +46,13 @@
 <body>
 
 <h2>All Registered Children</h2>
-
+<label for="sort" id="sort">Sort by:</label>
+<select id="sort_by" name="sort_by">
+    <option value="dob">Date of Birth</option>
+    <option value="gender">Gender</option>
+    <option value="vaccine">Vaccine Named</option>
+    <option value="date">Date of administration</option>
+</select><br>
 <table id="dataTable">
     <thead>
         <tr>
@@ -58,6 +68,7 @@
     </thead>
     <tbody>
         <?php
+       
         // Connection to the database
         $server1 = "localhost";
         $username1 = "user";
@@ -112,6 +123,7 @@
         // Close connection
         $conn1->close();
         $conn2->close();
+        
         ?>
     </tbody>
 </table>

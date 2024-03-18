@@ -28,6 +28,7 @@
             font-size: large;
         }
         table {
+            background-color: seashell;
             border-collapse: collapse;
             width: 100%;
         }
@@ -37,12 +38,20 @@
             text-align: left;
         }
         button{
-        font-weight: bolder;
-        width: 150px;
-        height: 20px;
-        border: 1px solid #333;
-
-    }
+            padding: 10px;
+            width: 15%;
+            font-weight: bold;
+            background-color: #0e0d0d;
+			border:#0e0d0d;
+			color: #fff;
+			font-size: medium;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
     </style>
     </head>
     <header>
@@ -135,5 +144,6 @@
             </tbody>
         </table>
         <button onclick="window.location='dashboard.html'">Back to Dashboard</button>
+        <button id="download" onclick="window.print()">Export to PDF</button>
     </body>
 </html>
