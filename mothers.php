@@ -9,6 +9,7 @@
             background-color: bisque;
         }
         table {
+            background-color: seashell;
             border-collapse: collapse;
             width: 100%;
         }
@@ -28,7 +29,10 @@
             border: none; 
             cursor: pointer; 
             padding: 10px 20px;
-    }
+        }
+        button:hover{
+            background-color: #848383;
+        }
     </style>
 </head>
 <body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registered Fathers</title>
+    <title>Registered Guardians</title>
     <style>
         body{
             background-color: bisque;
@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<h2> Registered fathers</h2>
+<h2> Guardians</h2>
 
 <table>
     <thead>
@@ -68,7 +68,7 @@
             die("Connection failed: " . $conn1->connect_error);
         }
         $sql = "SELECT *
-        FROM father_details";
+        FROM guardian";
         $result = $conn1->query($sql);
 
 
@@ -109,3 +109,4 @@
 </script>
 </body>
 </html>
+

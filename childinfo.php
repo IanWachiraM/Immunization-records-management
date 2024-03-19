@@ -4,9 +4,35 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Children</title>
-    <!--<script src="pdf.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script> -->
+    <script>
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+        function makePDF(){
+            html2canvas(document.querySelector("#dataTable"),{
+                
+                allowTaint:true,
+                useCORS:true,
+                scale:1
+                
+            }).then(canvas => {
+                
+                var img = canvas.toDataURL("image/png");
+                
+                var doc = new jsPDF();
+                doc.setFont('Arial');
+                doc.getFontSize(11);
+                doc.addImage(img,'PNG', 7,13,100,100);
+                doc.save();
+            });
+
+        }
+        </script>
     <style>
         body{
             background-color: bisque;
@@ -47,10 +73,11 @@
 
 <h2>All Registered Children</h2>
 <label for="sort" id="sort">Sort by:</label>
-<select id="sort_by" name="sort_by">
+<select id="sort_by" name="sort_by" onchange="sortTable()">
+    <option value="id">Patient ID</option>
     <option value="dob">Date of Birth</option>
     <option value="gender">Gender</option>
-    <option value="vaccine">Vaccine Named</option>
+    <option value="vaccine">Vaccine Name</option>
     <option value="date">Date of administration</option>
 </select><br>
 <table id="dataTable">
@@ -128,50 +155,59 @@
     </tbody>
 </table>
 <button onclick="goToHomePage()">Back to Dashboard</button>
-<button id="download" onclick="window.print()">Export to PDF</button>
+<button id="download" onclick="makePDF()">Export to PDF</button>
 <script>
     function goToHomePage(){
         window.location.href = "dashboard.html";
     }
 </script>
-<!--
 <script>
-  function generatePDF() {
-    // Select the table element
-    const table = document.querySelector('#dataTable');
+    function sortTable() {
+        var sort_by = document.getElementById("sort_by").value;
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("dataTable");
+        switching = true;
 
-    // Create a new jsPDF instance
-    const pdf = new jsPDF('p', 'pt', 'letter');
-
-    // Get the table's dimensions
-    let tableWidth = 0;
-    let tableHeight = 0;
-    for (let i = 0; i < table.rows.length; i++) {
-      const row = table.rows[i];
-      tableWidth = Math.max(tableWidth, row.offsetWidth);
-      if (row.offsetHeight > tableHeight) {
-        tableHeight = row.offsetHeight;
-      }
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("td")[getIndex(sort_by)];
+                y = rows[i + 1].getElementsByTagName("td")[getIndex(sort_by)];
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
     }
 
-    // Get the dimensions of the first row to calculate column widths
-    const firstRow = table.rows[0];
-    const columnWidths = [];
-    for (let i = 0; i < firstRow.cells.length; i++) {
-      const cell = firstRow.cells[i];
-      columnWidths.push(cell.offsetWidth);
+    function getIndex(value) {
+        var index = 0;
+        switch (value) {
+            case "date_of_birth":
+                index = 2; // Index of Date of Birth column
+                break;
+            case "patient_ID":
+                index = 3; //Index of patient id column
+            case "gender":
+                index = 4; // Index of Gender column
+                break;
+            case "vaccine_name":
+                index = 5; // Index of Vaccine Name column
+                break;
+            case "date_of_administration":
+                index = 6; // Index of Date of Administration column
+                break;
+        }
+        return index;
     }
-
-    // Create a new autoTable instance with the desired options
-   
-    // Save the generated PDF file
-    pdf.save('table.pdf');
-  }
-
-  // Ensure the DOM is fully loaded before calling the generatePDF function
-  window.onload = generatePDF;
 </script>
--->
 
 </body>
 </html>

@@ -57,6 +57,7 @@
             background-color: #555;
         }
         table {
+            background-color: seashell;
             position: absolute;
             display: block;
             border-collapse: collapse;
@@ -82,8 +83,9 @@
             display: flex;
             height: 50px;
             margin-top: 10%;
-            
-        
+        }
+        button:hover{
+            background-color: #848383;
         }
 
       
@@ -97,11 +99,12 @@
     <div class="container">
         <div class="side-menu">
             <a href="admindashboard.php">Registered Children</a> <!-- Restrict to admin.-->
-            <a href="vaccineinfo.html">Vaccine Information</a>
+            <!--<a href="vaccineinfo.html">Vaccine Information</a>-->
             <a href="notifications.php">Manage Notifications</a> <!-- Restrict to admin.-->
             <a href="fatherdetails.php">Registered Fathers</a>
             <a href="mothers.php">Registered Mothers</a>
-            <a href="appointment.html">Make an Appointment</a>
+            <a href="guardianstable.php">Registered Guardians</a>
+            <a href="appointment.html">Appointments</a>
         </div>
         
 
@@ -173,7 +176,7 @@
         $conn2->close();
         ?>
     </tbody>
-    <button onclick="window.print()">Export to PDF</button>
+ <!--   <button onclick="window.print()">Export to PDF</button> -->
 </table>
 </script>
 </body>
