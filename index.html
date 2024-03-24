@@ -114,7 +114,7 @@
                     <div class="user-type">
                         <label>Select User Type:</label>
                         <select name="user_type" required>
-                            <option value="user">User</option>
+                            <option value="user">Nurse/Doctor</option>
                             <option value="admin">Administrator</option>
                         </select>
                     </div><br>
@@ -136,7 +136,7 @@
         function validateForm() {
             var userType = document.querySelector('select[name="user_type"]').value;
             if (userType == 'user'){
-                window.location.href='parentlogin.html';
+                window.location.href='userlogin.html';
             }
             else if(userType == 'admin' ){
                 window.location.href ='adminlogin.php';

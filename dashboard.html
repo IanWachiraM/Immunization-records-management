@@ -96,6 +96,7 @@
             <a href="vaccineinfo.html">Vaccine Information</a>
             <a href="myinfo.php">Update Patient Information</a>
             <a href="notification.html">Manage Notifications</a> <!-- Restrict to admin.-->
+            <button onclick="logOut()">Log Out</button>
             <!--<a href="appointment.html">Make an Appointment</a> -->
         </div>
         <div class="container">
@@ -135,7 +136,18 @@
                 </form>
             </div>
         </div></div>
-        
+        <script>
+            function logOut(){
+                var logoutconfirm = confirm("Are you sure you want to log out?");
+                if (logoutconfirm){
+                    window.location.href = "userlogin.html";
+                }
+                else{
+                    window.location.href = "dashboard.html";
+                }
+                
+            }
+        </script>   
 </body>
 </html>
     

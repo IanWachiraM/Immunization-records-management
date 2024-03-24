@@ -87,6 +87,11 @@
         button:hover{
             background-color: #848383;
         }
+        #logout{
+            border: #ccc;
+            border-color: #ccc;
+            border-radius: 2px;
+        }
 
       
     </style>
@@ -104,7 +109,9 @@
             <a href="fatherdetails.php">Registered Fathers</a>
             <a href="mothers.php">Registered Mothers</a>
             <a href="guardianstable.php">Registered Guardians</a>
-            <a href="appointment.html">Appointments</a>
+            <a href="newuser.php">Grant User Acces</a>
+         <!--<a href="appointment.html">Appointments</a> -->
+            <button id ="logout" onclick="logOut()">Log Out</button>
         </div>
         
 
@@ -178,6 +185,17 @@
     </tbody>
  <!--   <button onclick="window.print()">Export to PDF</button> -->
 </table>
+<script>
+    function logOut(){
+        var logoutconfirm = confirm("Are you sure you want to log out?");
+        if (logoutconfirm){
+            window.location.href = "adminlogin.php";
+        }
+        else{
+            window.location.href = "admindashboard.php";
+        }
+        
+    }
 </script>
 </body>
 </html>

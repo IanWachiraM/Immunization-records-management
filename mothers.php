@@ -14,7 +14,7 @@
             html2canvas(document.querySelector("#dataTable"), {
                 allowTaint: true,
                 useCORS: true,
-                scale: 1
+                scale: 6
             }).then(canvas => {
                 var img = canvas.toDataURL("image/png");
                 var doc = new jsPDF();
