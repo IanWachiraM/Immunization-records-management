@@ -189,7 +189,7 @@
     function logOut(){
         var logoutconfirm = confirm("Are you sure you want to log out?");
         if (logoutconfirm){
-            window.location.href = "adminlogin.php";
+            window.location.href = "index.html";
         }
         else{
             window.location.href = "admindashboard.php";

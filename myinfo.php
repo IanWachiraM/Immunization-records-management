@@ -131,7 +131,7 @@
                             echo "</tr>";
                         }
                     } else {
-                        echo "Patient ID not found in Database";
+                        echo "Patient ID not found in Database!";
                     }
                     }
                 }
