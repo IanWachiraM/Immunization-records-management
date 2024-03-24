@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         
-        $sql = "INSERT INTO vaccine (patient_ID, patient_height, patient_weight, vaccine_name, date_of_administration, next_date, batch_number, health_care_provider)
+        $sql = "INSERT IGNORE INTO vaccine (patient_ID, patient_height, patient_weight, vaccine_name, date_of_administration, next_date, batch_number, health_care_provider)
         VALUES ('$patient_id', '$patient_height', '$patient_weight', '$vaccine_type', '$administration_date', '$next_administration', '$batch_number', '$healthcare_provider')";
 
 

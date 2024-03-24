@@ -39,7 +39,7 @@
                 doc.setFontSize(18); // Adjust font size as needed for readability
 
                 doc.addImage(img, 'PNG', 10, 10, newWidth, newHeight); // Adjust position as needed
-                doc.save("Registered Fathers.pdf");
+                doc.save("Registered Guardians.pdf");
             });
         }
     </script>
