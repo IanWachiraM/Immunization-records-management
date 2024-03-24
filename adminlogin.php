@@ -143,10 +143,10 @@
                         header("Location: admindashboard.php");
                         exit;
                     } else {
-                        echo '<div id="error-msg" style="color: red; font-weight: bold; font-size: 11px;">Invalid username or password. Please try again</div>';
+                        echo '<div id="error-msg" style="color: red; font-weight: bold; font-size: 13px;">Invalid username or password. Please try again</div>';
                     }
                 } else{
-                    echo '<div id="error-msg" style="color: red; font-weight: bold; font-size: 11px;">Invalid username or password.Please try again.</div>';
+                    echo '<div id="error-msg" style="color: red; font-weight: bold; font-size: 13px;">Invalid username or password.Please try again.</div>';
                 }
             }
             ?>
