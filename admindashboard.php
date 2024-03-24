@@ -76,7 +76,7 @@
             padding: 10px 20px; 
             font-family: Arial, Helvetica, sans-serif;
             font-size: large; 
-            font-weight: bolder;
+            font-weight: bold;
             border: none; 
             cursor: pointer; 
             border-radius: 5px;
@@ -88,9 +88,9 @@
             background-color: #848383;
         }
         #logout{
-            border: #ccc;
+            border: white;
             border-color: #ccc;
-            border-radius: 2px;
+            border-radius: 5px;
         }
 
       

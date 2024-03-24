@@ -22,6 +22,7 @@
             justify-content: space-between;
             align-items: center;
         }
+        
         .container {
             max-width: 2200px;
             margin: 0;
@@ -71,7 +72,7 @@
         padding: 10px 20px; 
         font-family: Arial, Helvetica, sans-serif;
         font-size: large; 
-        font-weight: bolder;
+        font-weight: bold;
         border: none; 
         cursor: pointer; 
         border-radius: 5px;
@@ -79,6 +80,10 @@
 
         button:hover {
             background-color: #555;
+        }
+        #logout{
+            border-radius: 5px;
+            border-color: #f4f3f3;
         }
 
       
@@ -94,9 +99,9 @@
             <a href="dashboard.html">Dashboard</a>
             <a href="childinfo.php">Registered Children</a> <!-- Restrict to admin.-->
             <a href="vaccineinfo.html">Vaccine Information</a>
-            <a href="myinfo.php">Update Patient Information</a>
+            <a href="myinfo.php">Search for Patient</a>
             <a href="notification.html">Manage Notifications</a> <!-- Restrict to admin.-->
-            <button onclick="logOut()">Log Out</button>
+            <button id="logout" onclick="logOut()">Log Out</button>
             <!--<a href="appointment.html">Make an Appointment</a> -->
         </div>
         <div class="container">
@@ -110,15 +115,15 @@
                     <input type="number" id="weight" name="weight" required><br>
                     <label for="vaccine_type">Vaccine Type:</label>
                     <select id="vaccine_type" name="vaccine_type" required>
-                        <option value="bcg">BCG</option>
-                        <option value="dpt">DPT</option>
-                        <option value="hepatitis_A">Hepatitis A</option>
-                        <option value="hepatitis_B">Hepatitis B</option>
-                        <option value="measles">Measles</option>
-                        <option value="polio">Polio</option>
-                        <option value="rotavirus">Rotavirus</option>
-                        <option value="rsv">RSV</option>
-                        <option value="covid">Covid 19</option>
+                        <option value="B.C.G">BCG</option>
+                        <option value="D.P.T">DPT</option>
+                        <option value="Hepatitis_A">Hepatitis A</option>
+                        <option value="Hepatitis_B">Hepatitis B</option>
+                        <option value="Measles">Measles</option>
+                        <option value="Polio">Polio</option>
+                        <option value="Rotavirus">Rotavirus</option>
+                        <option value="RSV">RSV</option>
+                        <option value="Covid 19">Covid 19</option>
                     </select>
                     <label for="administration_date">Date of Administration:</label>
                     <input type="date" id="administration_date" name="administration_date" required>
@@ -128,9 +133,9 @@
                     <input type="text" id="batch_number" name="batch_number" required>
                     <label for="healthcare_provider">Healthcare Provider:</label>
                     <select id="healthcare_provider" name="healthcare_provider" required>
-                        <option value="baraka">Baraka</option>
-                        <option value="musa">Musa</option>
-                        <option value="rose">Rose</option>
+                        <option value="Baraka">Baraka</option>
+                        <option value="Musa">Musa</option>
+                        <option value="Rose">Rose</option>
                     </select>
                     <button type="submit">Submit</button>
                 </form>

@@ -87,10 +87,10 @@
 <select id="sort_by" name="sort_by" onchange="sortTable()">
     <option value="id">Patient ID</option>
     <option value="dob">Date of Birth</option>
-    <option value="gender">Gender</option>
     <option value="vaccine">Vaccine Name</option>
     <option value="date">Date of administration</option>
 </select><br>
+
 <table id="dataTable">
     <thead>
         <tr>
@@ -127,10 +127,13 @@
         if ($conn1->connect_error || $conn2->connect_error) {
             die("Connection failed: " . $conn1->connect_error . "or".$conn2->connect_error);
         }
+
         $sql = "SELECT child_details.first_name, child_details.last_name, child_details.date_of_birth,child_details.gender, vaccine.patient_ID, vaccine.vaccine_name, vaccine.date_of_administration
         FROM logindetails.child_details
         JOIN vaccinetable.vaccine ON child_details.patient_id = vaccine.patient_id
         ";
+        
+
         $result = $conn1->query($sql);
 
 
@@ -173,6 +176,8 @@
     }
 </script>
 <script>
+
+
     function sortTable() {
         var sort_by = document.getElementById("sort_by").value;
         var table, rows, switching, i, x, y, shouldSwitch;
