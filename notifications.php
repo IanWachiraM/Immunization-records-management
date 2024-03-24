@@ -32,10 +32,11 @@
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
            
-            <button type="submit">Send</button>
+            <button type="submit">Send</button><br>
+            <button onclick="goToPage()">Back to Dashboard</button> 
         </form>
     </div>
-    <button onclick="goToPage()">Back to Dashboard</button>   
+      
     <script>
         function goToPage(){
             window.location.href="admindashboard.php";

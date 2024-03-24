@@ -4,6 +4,46 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Fathers</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+        function makePDF() {
+            html2canvas(document.querySelector("#dataTable"), {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1
+            }).then(canvas => {
+                var img = canvas.toDataURL("image/png");
+                var doc = new jsPDF();
+
+                var a4Width = 210; // in mm
+                var a4Height = 297; // in mm
+                var aspectRatio = canvas.width / canvas.height;
+
+                // Calculate width and height for the image to fit A4 size while maintaining aspect ratio
+                var maxWidth = a4Width - 20; // Subtracting 20mm from width for margin
+                var maxHeight = a4Height - 20; // Subtracting 20mm from height for margin
+
+                var widthRatio = maxWidth / canvas.width;
+                var heightRatio = maxHeight / canvas.height;
+
+                var resizeRatio = Math.min(widthRatio, heightRatio);
+
+                var newWidth = canvas.width * resizeRatio;
+                var newHeight = canvas.height * resizeRatio;
+
+                doc.setFont('Arial');
+                doc.setFontSize(18); // Adjust font size as needed for readability
+
+                doc.addImage(img, 'PNG', 10, 10, newWidth, newHeight); // Adjust position as needed
+                doc.save("Registered Fathers.pdf");
+            });
+        }
+
+    </script>
     <style>
         body{
             background-color: bisque;
@@ -39,7 +79,7 @@
 
 <h2> Registered fathers</h2>
 
-<table>
+<table id="dataTable">
     <thead>
         <tr>
             <th>First Name</th>
@@ -101,6 +141,7 @@
     </tbody>
 </table>
 <button onclick="goToHomePage()">Back to Dashboard</button>
+<button id="download" onclick="makePDF()">Export to PDF</button>
 <script>
     function goToHomePage(){
         window.location.href = "admindashboard.php";

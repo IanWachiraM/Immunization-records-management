@@ -144,6 +144,6 @@
             </tbody>
         </table>
         <button onclick="window.location='dashboard.html'">Back to Dashboard</button>
-        <button id="download" onclick="window.print()">Export to PDF</button>
+       
     </body>
 </html>
