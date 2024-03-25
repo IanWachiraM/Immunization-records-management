@@ -90,6 +90,13 @@
     <option value="vaccine">Vaccine Name</option>
     <option value="date">Date of administration</option>
 </select><br>
+<label for="filter_gender">Filter by Gender:</label>
+<select id="filter_gender" name="filter_gender" onchange="filterTable()">
+    <option value="all">All Genders</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select><br>
+
 
 <table id="dataTable">
     <thead>
@@ -129,11 +136,18 @@
             die("Connection failed: " . $conn1->connect_error . "or".$conn2->connect_error);
         }
 
+        $filter_gender = isset($_GET['filter_gender']) ? $_GET['filter_gender'] : 'all';
+
+
         $sql = "SELECT child_details.first_name, child_details.last_name, child_details.date_of_birth,child_details.gender, vaccine.patient_ID, vaccine.vaccine_name, vaccine.date_of_administration, vaccine.next_date
         FROM logindetails.child_details
         JOIN vaccinetable.vaccine ON child_details.patient_id = vaccine.patient_id
         ";
-        
+
+        if ($filter_gender && $filter_gender != 'all') {
+            // Add condition based on the selected gender filter
+            $sql .= " WHERE child_details.gender = '$filter_gender'";
+        }
 
         $result = $conn1->query($sql);
 
@@ -179,6 +193,13 @@
     }
 </script>
 <script>
+    function filterTable() {
+        var selectedGender = document.getElementById("filter_gender").value;
+        var currentURL = window.location.href.split('?')[0]; // Get the current URL without query parameters
+        var newURL = currentURL + "?filter_gender=" + selectedGender; // Add the selected filter as a query parameter
+
+        window.location.href = newURL; // Reload the page with the new URL
+    }
 
 
     function sortTable() {
