@@ -141,7 +141,7 @@
     </tbody>
 </table>
 <button onclick="goToHomePage()">Back to Dashboard</button>
-<button id="download" onclick="makePDF()">Export to PDF</button>
+<button id="download" onclick="window.print()">Export to PDF</button>
 <script>
     function goToHomePage(){
         window.location.href = "admindashboard.php";

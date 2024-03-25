@@ -96,6 +96,20 @@
     <option value="male">Male</option>
     <option value="female">Female</option>
 </select><br>
+<label for="filter_vaccine">Filter by Vaccine:</label>
+<select id="filter_vaccine" name="filter_vaccine" onchange="filteringTable()">
+    <option value="all">All Vaccines</option>
+    <option value="BCG">BCG</option>
+    <option value="DPT">DPT</option>
+    <option value="Hepatitis_A">Hepatitis A</option>
+    <option value="Hepatitis_B">Hepatitis B</option>
+    <option value="Measles">Measles</option>
+    <option value="Polio">Polio</option>
+    <option value="Rotavirus">Rotavirus</option>
+    <option value="RSV">RSV</option>
+    <option value="Covid 19">Covid 19</option>
+    <option value="Cholera">Cholera</option>
+</select><br>
 
 
 <table id="dataTable">
@@ -137,6 +151,7 @@
         }
 
         $filter_gender = isset($_GET['filter_gender']) ? $_GET['filter_gender'] : 'all';
+        $filter_vaccine = isset($_GET['filter_vaccine']) ? $_GET['filter_vaccine'] : 'all';
 
 
         $sql = "SELECT child_details.first_name, child_details.last_name, child_details.date_of_birth,child_details.gender, vaccine.patient_ID, vaccine.vaccine_name, vaccine.date_of_administration, vaccine.next_date
@@ -145,8 +160,10 @@
         ";
 
         if ($filter_gender && $filter_gender != 'all') {
-            // Add condition based on the selected gender filter
             $sql .= " WHERE child_details.gender = '$filter_gender'";
+        }
+        if ($filter_vaccine && $filter_vaccine != 'all') {
+            $sql .= " WHERE vaccine.vaccine_name = '$filter_vaccine'";
         }
 
         $result = $conn1->query($sql);
@@ -186,7 +203,7 @@
     </tbody>
 </table>
 <button onclick="goToHomePage()">Back to Dashboard</button>
-<button id="download" onclick="makePDF()">Export to PDF</button>
+<button id="download" onclick="window.print()">Export to PDF</button>
 <script>
     function goToHomePage(){
         window.location.href = "dashboard.html";
@@ -197,6 +214,19 @@
         var selectedGender = document.getElementById("filter_gender").value;
         var currentURL = window.location.href.split('?')[0]; // Get the current URL without query parameters
         var newURL = currentURL + "?filter_gender=" + selectedGender; // Add the selected filter as a query parameter
+
+        window.location.href = newURL; // Reload the page with the new URL
+    }
+    function filteringTable() {
+        var selectedVaccine = document.getElementById("filter_vaccine").value;
+        var currentURL = window.location.href.split('?')[0]; // Get the current URL without query parameters
+        var params = new URLSearchParams(window.location.search);
+
+        // Set the selected vaccine filter as a query parameter
+        params.set('filter_vaccine', selectedVaccine);
+
+        // Construct the new URL with the updated query parameters
+        var newURL = currentURL + '?' + params.toString();
 
         window.location.href = newURL; // Reload the page with the new URL
     }
