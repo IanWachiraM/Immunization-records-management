@@ -31,13 +31,14 @@ session_start();
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $number = $_POST['phone'];
         $email = $_POST['email'];
+        $p_id = $_POST['patient_id'];
+        $vaccine = $_POST['vaccine_type'];
         
         $sql1 = "INSERT INTO subscription_details (phone_number, email_address) VALUES ('$number', '$email')";
  
     }
-    $p_id = $_POST['patient_id'];
-    $vaccine = $_POST['vaccine_type'];
-    $sql2 = "SELECT next_date, patient_id, vaccine_name FROM vaccine WHERE patient_id = $p_id";
+    
+    $sql2 = "SELECT next_date, patient_id, vaccine_name FROM vaccine WHERE patient_id = '$p_id' AND vaccine_name = '$vaccine'";
     $result2 = $conn2->query($sql2);
     $result2 = mysqli_query($conn2, $sql2);
     if ($result2 === false) {
@@ -72,7 +73,7 @@ session_start();
             $subject = 'Child Vaccination Reminder';
             $body = "<p>Dear Parent,</p>";
             $body = "<p>We hope this email finds you well</p>";
-            $body .= "<p>This is a reminder that your child is due for vaccination on {$row['next_date']}.</p>";
+            $body .= "<p>This is a reminder that your child is due for vaccination on {$row['next_date']} for {$row['vaccine_name']} vaccine.</p>";
             $body .= "<p>Regards,\nYour Healthcare Provider<p>";
 
 

@@ -17,15 +17,16 @@
             <input type="number" id="patient_id" name="patient_id" required><br>
             <label for="vaccine_type">Vaccine Type:</label>
                     <select id="vaccine_type" name="vaccine_type" required>
-                        <option value="bcg">BCG</option>
-                        <option value="dpt">DPT</option>
-                        <option value="hepatitis_A">Hepatitis A</option>
-                        <option value="hepatitis_B">Hepatitis B</option>
-                        <option value="measles">Measles</option>
-                        <option value="polio">Polio</option>
-                        <option value="rotavirus">Rotavirus</option>
-                        <option value="rsv">RSV</option>
-                        <option value="covid">Covid 19</option>
+                    <option value="BCG">BCG</option>
+                    <option value="DPT">DPT</option>
+                    <option value="Hepatitis_A">Hepatitis A</option>
+                    <option value="Hepatitis_B">Hepatitis B</option>
+                    <option value="Measles">Measles</option>
+                    <option value="Polio">Polio</option>
+                    <option value="Rotavirus">Rotavirus</option>
+                    <option value="RSV">RSV</option>
+                    <option value="Covid 19">Covid 19</option>
+                    <option value="Cholera">Cholera</option>
                     </select><br>
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required>
