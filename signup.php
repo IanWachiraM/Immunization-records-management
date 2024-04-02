@@ -5,49 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: bisque;
-      margin: 0;
-	  padding: 0;
-      display: flex; 
-	  justify-content: center; 
-	  flex-direction: column;
-	  align-items: center; 
-	  min-height: 100vh; 
-    }
-    .container {
-        background-color: seashell;
-        width: 500px;
-		padding: 20px;
-		margin: 50px auto;
-		padding: 50px;
-		border: 1px solid #8a8989;
-		border-radius: 5px;
-		text-align: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    h2 {
-		text-align: center;
-		font-weight: bold;
-		margin-bottom: 40px;
-	}
-
-    label, input {
-      display: block;
-      width: 100%;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="password"] {
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #141313;
+      body {
+        font-family: Arial, sans-serif;
+        background-color: bisque;
+        margin: 0;
+      padding: 0;
+        display: flex; 
+      justify-content: center; 
+      flex-direction: column;
+      align-items: center; 
+      min-height: 100vh; 
+      }
+      .container {
+          background-color: seashell;
+          width: 500px;
+      padding: 20px;
+      margin: 50px auto;
+      padding: 50px;
+      border: 1px solid #8a8989;
       border-radius: 5px;
-      box-sizing: border-box;
+      text-align: center;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      h2 {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 40px;
     }
+
+      label, input {
+        display: block;
+        width: 100%;
+        font-weight: bold;
+      }
+      input[type="text"], input[type="password"] {
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #141313;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
     input[type="submit"] {
         width: 50%;
         padding: 10px 10px;
@@ -77,7 +77,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Sign Up for iChanjo:</h2>
+    <h2>Password Reset:</h2>
     <form id = "signup_form" action="signup.php" method="post">
       <div class="form-group">
         <label for="username">Username:</label>
@@ -112,43 +112,41 @@
                 echo '<div id="error-msg" style="color: red; font-weight: bold; font-size: 11px;">Passwords do not match. Kindly try again.</div>';
                 echo '<script>setTimeout(function() { document.getElementById("error-msg").style.display = "none"; }, 5000);</script>';
             } else {
-                $hashed_password = password_hash($pass_word, PASSWORD_DEFAULT);
-
-                $server = "localhost";
-                $username = "user1";
-                $password = "wachira254";
-                $dbname = "signup";
-        
-                $conn = new mysqli($server, $username, $password, $dbname) or die("Connect failed" .mysqli_connect_error());
-        
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "INSERT INTO signup_details (username,password_final) VALUES (?, ?)";
-                $stmt = $conn->prepare($sql);
-
-                $stmt->bind_param("s", $user_name, $hashed_password);
-                $stmt->execute();
-                
-                if ($stmt->affected_rows > 0) {
-                    echo '<script>';
-                    echo 'alert("User registered successful!");';
-                    echo '</script>';
-                    header("Location: fatherdetails.html"); 
-                    exit();                 
-                    
-                } else {
-                    echo '<div id="error" style="color: red; font-weight: bold; font-size: 14px;"Error: ">' . $conn->error;
-                }
-
-                $stmt->close();
-                $conn->close();  
+              $server = "localhost";
+              $username = "user1";
+              $password = "wachira254";
+              $dbname = "signup";
+              
+              $conn = new mysqli($server, $username, $password, $dbname) or die("Connect failed" . mysqli_connect_error());
+              
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+              }
+              
+              $sql = "INSERT INTO signup_details (username, password_final) VALUES (?, ?)";
+              $stmt = $conn->prepare($sql);
+              
+              $stmt->bind_param("ss", $user_name, $pass_word); // Assuming $pass_word contains the plain text password
+              $stmt->execute();
+              
+              if ($stmt->affected_rows > 0) {
+                  echo '<script>';
+                  echo 'alert("Password reset successful!");';
+                  echo '</script>';
+                  header("Location: recordcheck.html"); 
+                  exit();                 
+              } else {
+                  echo '<div id="error" style="color: red; font-weight: bold; font-size: 14px;">Error: ' . $conn->error . '</div>';
+              }
+              
+              $stmt->close();
+              $conn->close();
+              
             }
         }
 ?>
       </div>
-      <input type="submit" value="Sign Up">
+      <input type="submit" value="Reset">
 
     </form>
   </div>

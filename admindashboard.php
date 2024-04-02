@@ -126,7 +126,7 @@
             <th>Vaccine Administered</th>
             <th>Date Administered</th>
             <th>Next Date of Administration</th>
-            
+            <th>Health Care Provider</th>
         </tr>
     </thead>
     <tbody>
@@ -151,7 +151,7 @@
         if ($conn1->connect_error || $conn2->connect_error) {
             die("Connection failed: " . $conn1->connect_error . "or".$conn2->connect_error);
         }
-        $sql = "SELECT child_details.first_name, child_details.last_name, child_details.date_of_birth,child_details.gender, vaccine.patient_ID, vaccine.vaccine_name, vaccine.date_of_administration, vaccine.next_date
+        $sql = "SELECT child_details.first_name, child_details.last_name, child_details.date_of_birth,child_details.gender, vaccine.patient_ID, vaccine.vaccine_name, vaccine.date_of_administration, vaccine.next_date, vaccine.health_care_provider
         FROM logindetails.child_details
         JOIN vaccinetable.vaccine ON child_details.patient_id = vaccine.patient_id
         ";
@@ -175,6 +175,7 @@
                 echo "<td>" . $row["vaccine_name"] . "</td>";
                 echo "<td>" . $row["date_of_administration"] . "</td>";
                 echo "<td>" . $row["next_date"] . "</td>";
+                echo "<td>" . $row["health_care_provider"] . "</td>";
                 echo "</tr>";
             }
         } else {

@@ -88,6 +88,9 @@
 			transform: translateY(-50%);
 			cursor: pointer;
    		}
+		#reset{
+			margin-top: 10pxs;
+		}
 
 	</style>
 </head>
@@ -112,7 +115,8 @@
 				  </span>
 				</div>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Login</button><br>
+			<button id="reset" type="button" onclick="resetPassword()">First Time Login?</button>
 			<?php
 			$server = "localhost";
 			$username = "user";
@@ -169,6 +173,10 @@
 			passwordInput.type = "password";
 			passwordIcon.src = "https://cdn-icons-png.flaticon.com/512/25/25186.png";
 		  }
+		}
+		function resetPassword() {
+		    // Redirect to password reset page or perform necessary actions
+		    window.location.href = "signup.php";
 		}
 	  </script>
 </body>
